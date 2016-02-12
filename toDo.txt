@@ -1,0 +1,26 @@
+TO-DO checklist and README
+
+README:
+This is how I implemented the program:
+- testMain.cpp (which we should eventually change to main.cpp) sends an array (heap) of the character counts for each character to HoffManEncoding. It also sends the input and encoded texts to HoffmanEncoding. I use HoffmanEncoding just to abstract from MinHeap, which now I realize should probably be changed to a different name. MinHeap handles both the trie and heap.
+
+- HoffmanEncoding gives all the data to MinHeap to begin the encoding process
+
+- MinHeap builds a heap by finding the last interior node, and then percolating through the tree until you reach the root. This part is pretty self-explanatory.
+
+- MinHeap then constructs a trie, which is a vector of TrieNode* called "heap" (I know this is pretty confusing). I did a poor job naming the variables, so you might need to ask me if you are confused.
+
+- MinHeap then assigns codes to the nodes if they contain a letter. (NOTE: I merged the nodes to have a character 'A'. You can pretty much ignore the name of the mergeNode, it is just there because I wanted to see how they worked during tests). Also note that you have to use the pop_back() function because the encoding would assign an extra "1". If you need me to explain this, I can.
+
+- The encoding and decoding are then done, and the strings are printed out.
+
+- I did everything inside the constructor of MinHeap. Feel free to change this.
+
+
+TO-DO Checklist (not complete):
+
+1. MEMORY MANAGEMENT: I am not running into any more segmentation faults, although I have not deleted any pointers. Perhaps we need a destructor or some sort. I am worried that there will be issues for large problems.
+
+2. HANDLING EDGE CASES: I have not extensively thought about cases where there are 0 nodes or only 1 node in the heap. The TA's said that we can assume that the input will be correct, with more than one character, but it might be nice to put stuff in there. In any case, it works fine right now if you put in correct inputs.
+
+ 
